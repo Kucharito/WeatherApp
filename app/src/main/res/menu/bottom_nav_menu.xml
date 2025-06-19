@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/weather_fragment"
+        android:icon="@drawable/ic_weather"
+        android:title="Weather" />
+    <item
+        android:id="@+id/forecast_fragment"
+        android:icon="@drawable/ic_forecast"
+        android:title="Forecast" />
+</menu>
