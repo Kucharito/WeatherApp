@@ -105,5 +105,17 @@ public class WeatherFragment extends Fragment {
         }
     }
 
+    public void updateWeatherFromForecast(ForecastResponse.ListItem item) {
+        if (item != null && item.getMain() != null) {
+            descriptionValue.setText(item.getWeather().get(0).getDescription());
+            temperatureValue.setText(String.format("%.1f°C", item.getMain().getTemp()));
+
+            String iconCode = item.getWeather().get(0).getIcon();
+            String iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+
+            ImageView weatherIcon = getView().findViewById(R.id.weatherIcon);
+            Glide.with(requireContext()).load(iconUrl).into(weatherIcon);
+        }
+    }
 
 }

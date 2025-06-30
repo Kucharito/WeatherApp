@@ -16,9 +16,10 @@ import java.util.List;
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder> {
 
     private List<ForecastResponse.ListItem> forecastList;
-
-    public ForecastAdapter(List<ForecastResponse.ListItem> forecastList) {
+    private OnForecastItemClickListener listener;
+    public ForecastAdapter(List<ForecastResponse.ListItem> forecastList, OnForecastItemClickListener listener) {
         this.forecastList = forecastList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -47,7 +48,8 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         return forecastList.size();
     }
 
-    static class ForecastViewHolder extends RecyclerView.ViewHolder {
+
+    class ForecastViewHolder extends RecyclerView.ViewHolder {
         TextView dateTextView, tempTextView, descTextView;
         ImageView iconImageView;
 
@@ -58,6 +60,14 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
             descTextView = itemView.findViewById(R.id.descTextView);
             iconImageView = itemView.findViewById(R.id.iconImageView);
 
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onForecastItemClick(forecastList.get(position));
+                    }
+                }
+            });
         }
     }
 }

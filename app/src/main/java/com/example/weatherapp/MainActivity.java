@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnForecastItemClickListener {
 
     private BottomNavigationView bottomNavigationView;
     private static final String API_KEY = "f7938294059a9de1a1091e25ff901c6e";
@@ -54,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
             if (savedInstanceState == null) {
                 bottomNavigationView.setSelectedItemId(R.id.weather_fragment);
             }
+        }
+    }
+    @Override
+    public void onForecastItemClick(ForecastResponse.ListItem item){
+        WeatherFragment weatherFragment = (WeatherFragment) getSupportFragmentManager().findFragmentById(R.id.left_fragment_container);
+        if (weatherFragment != null) {
+            weatherFragment.updateWeatherFromForecast(item);
         }
     }
 }

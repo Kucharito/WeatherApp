@@ -1,11 +1,13 @@
 package com.example.weatherapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +22,16 @@ public class ForecastFragment extends Fragment {
 
     private RecyclerView forecastRecyclerView;
     private ForecastAdapter forecastAdapter;
+    private OnForecastItemClickListener listener;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof OnForecastItemClickListener) {
+            listener = (OnForecastItemClickListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnForecastItemClickListener");
+        }
+    }
 
     private static final String API_KEY = "f7938294059a9de1a1091e25ff901c6e";
 
@@ -59,7 +71,7 @@ public class ForecastFragment extends Fragment {
         ForecastResponse forecastResponse = gson.fromJson(jsonData, ForecastResponse.class);
 
         if (forecastResponse != null && forecastResponse.getList() != null) {
-            forecastAdapter = new ForecastAdapter(forecastResponse.getList());
+            forecastAdapter = new ForecastAdapter(forecastResponse.getList(), listener);
             forecastRecyclerView.setAdapter(forecastAdapter);
         } else {
             Toast.makeText(requireContext(), "Predpoveď nie je k dispozícii", Toast.LENGTH_SHORT).show();
