@@ -2,9 +2,9 @@
     <item
         android:id="@+id/weather_fragment"
         android:icon="@drawable/ic_weather"
-        android:title="Weather" />
+        android:title="@string/nav_weather" />
     <item
         android:id="@+id/forecast_fragment"
         android:icon="@drawable/ic_forecast"
-        android:title="Forecast" />
+        android:title="@string/nav_forecast" />
 </menu>

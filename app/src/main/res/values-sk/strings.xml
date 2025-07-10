@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Počasie</string>
+    <string name="temperature">Teplota</string>
+    <string name="description">Popis</string>
+    <string name="icon">Ikona</string>
+    <string name="enter_city">Zadajte názov mesta</string>
+    <string name="ok">OK</string>
+    <string name="toast_enter_city">Zadajte názov mesta</string>
+    <string name="toast_weather_error">Chyba pri načítaní počasia</string>
+    <string name="toast_weather_unavailable">Dáta o počasí nie sú k dispozícii</string>
+    <string name="weather_icon">Ikona počasia</string>
+    <string name="nav_weather">Počasie</string>
+    <string name="nav_forecast">Predpoveď</string>
+    <string name="iconLabel">Ikona</string>
+</resources>

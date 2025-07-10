@@ -1,5 +1,15 @@
 <resources>
-    <string name="app_name">WeatherApp</string>
-    <string name="weather_icon">Icon for current weather</string>
-
+<string name="app_name">Weather</string>
+<string name="temperature">Temperature</string>
+<string name="description">Description</string>
+<string name="icon">Icon</string>
+<string name="enter_city">Enter city name</string>
+<string name="ok">OK</string>
+<string name="toast_enter_city">Please enter a city name</string>
+<string name="toast_weather_error">Error loading weather data</string>
+<string name="toast_weather_unavailable">Weather data not available</string>
+<string name="weather_icon">Weather icon</string>
+<string name="nav_weather">Weather</string>
+<string name="nav_forecast">Forecast</string>
+    <string name="iconLabel">Icon</string>
 </resources>

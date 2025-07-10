@@ -22,6 +22,8 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
+import java.util.Locale;
+
 
 public class WeatherFragment extends Fragment {
     private TextView descriptionValue;
@@ -66,7 +68,7 @@ public class WeatherFragment extends Fragment {
                     editor.apply();
                     getCurrentWeatherData(city);
                 } else {
-                    Toast.makeText(requireActivity(), "Zadajte nazov mesta", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity(), getString(R.string.toast_enter_city), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -75,13 +77,15 @@ public class WeatherFragment extends Fragment {
     }
 
     private void getCurrentWeatherData(String city) {
-        String url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=f7938294059a9de1a1091e25ff901c6e&units=metric";
+        Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
+        String languageCode= currentLocale.getLanguage();
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=f7938294059a9de1a1091e25ff901c6e&units=metric" + "&lang=" + languageCode;
 
         RequestQueue queue = Volley.newRequestQueue(requireContext());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, url, null,
                 response -> parseCurrentWeatherData(response.toString()),
-                error -> Toast.makeText(requireContext(), "Chyba pri nacitani pocasia", Toast.LENGTH_SHORT).show()
+                error -> Toast.makeText(requireContext(), getString(R.string.toast_weather_error), Toast.LENGTH_SHORT).show()
         );
         queue.add(jsonObjectRequest);
     }
@@ -106,7 +110,7 @@ public class WeatherFragment extends Fragment {
                 weatherIcon.setImageResource(R.drawable.ic_01d); //default
             }
         } else {
-            Toast.makeText(requireContext(), "Data o pocasi nie su k dispozici", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), getString(R.string.toast_weather_unavailable), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -18,6 +18,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
+import java.util.Locale;
+
 public class ForecastFragment extends Fragment {
 
     private RecyclerView forecastRecyclerView;
@@ -55,7 +57,10 @@ public class ForecastFragment extends Fragment {
     }
 
     private void getForecastData(String city) {
-        String url = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + API_KEY + "&units=metric";
+        Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
+        String languageCode = currentLocale.getLanguage();
+
+        String url = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + API_KEY + "&units=metric" + "&lang=" + languageCode;
 
         RequestQueue queue = Volley.newRequestQueue(requireContext());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
