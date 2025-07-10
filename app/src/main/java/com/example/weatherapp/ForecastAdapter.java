@@ -36,11 +36,19 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         holder.tempTextView.setText(String.format("%.1f°C", item.getMain().getTemp()));
         holder.descTextView.setText(item.getWeather().get(0).getDescription());
         String iconCode = item.getWeather().get(0).getIcon();
-        String iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+        int iconResId = holder.itemView.getContext().getResources().getIdentifier("ic_" + iconCode, "drawable", holder.itemView.getContext().getPackageName());
+        if(iconResId != 0) {
+            holder.iconImageView.setImageResource(iconResId);
+        } else {
+            holder.iconImageView.setImageResource(R.drawable.ic_01d); // Default icon if not found
+        }
 
-        Glide.with(holder.itemView.getContext())
+
+        //String iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+
+        /*Glide.with(holder.itemView.getContext())
                 .load(iconUrl)
-                .into(holder.iconImageView);
+                .into(holder.iconImageView);*/
     }
 
     @Override

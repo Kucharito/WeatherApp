@@ -96,10 +96,15 @@ public class WeatherFragment extends Fragment {
             temperatureValue.setText(String.format("%.1f°C", weatherResponse.getMain().getTemp()));
 
             String iconCode = weatherResponse.getWeather().get(0).getIcon();
-            String iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
-
             ImageView weatherIcon = getView().findViewById(R.id.weatherIcon);
-            Glide.with(requireContext()).load(iconUrl).into(weatherIcon);
+
+            int iconResId = getResources().getIdentifier("ic_" + iconCode, "drawable", requireContext().getPackageName());
+            if (iconResId!=0){
+                weatherIcon.setImageResource(iconResId);
+            }
+            else{
+                weatherIcon.setImageResource(R.drawable.ic_01d); //default
+            }
         } else {
             Toast.makeText(requireContext(), "Data o pocasi nie su k dispozici", Toast.LENGTH_SHORT).show();
         }
@@ -111,10 +116,15 @@ public class WeatherFragment extends Fragment {
             temperatureValue.setText(String.format("%.1f°C", item.getMain().getTemp()));
 
             String iconCode = item.getWeather().get(0).getIcon();
-            String iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
-
             ImageView weatherIcon = getView().findViewById(R.id.weatherIcon);
-            Glide.with(requireContext()).load(iconUrl).into(weatherIcon);
+
+            int iconResId = getResources().getIdentifier("ic_" + iconCode, "drawable", requireContext().getPackageName());
+            if (iconResId != 0){
+                weatherIcon.setImageResource(iconResId);
+            } else {
+                weatherIcon.setImageResource(R.drawable.ic_01d); //default icon
+            }
+
         }
     }
 
