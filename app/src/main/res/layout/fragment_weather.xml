@@ -8,14 +8,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="88dp"
-        android:paddingBottom="80dp">
+        android:paddingTop="106dp"
+        android:paddingBottom="5dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/temperatureCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="8dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_below="@id/temperatureCard"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_below="@id/descriptionCard"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_below="@id/iconCard"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:hint="@string/enter_city"
             android:padding="12dp"
             android:backgroundTint="#6200EE"

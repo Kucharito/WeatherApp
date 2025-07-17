@@ -1,5 +1,6 @@
 package com.example.weatherapp;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder> {
 
@@ -32,7 +36,8 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
     @Override
     public void onBindViewHolder(@NonNull ForecastViewHolder holder, int position) {
         ForecastResponse.ListItem item = forecastList.get(position);
-        holder.dateTextView.setText(item.getDtTxt());
+        String formattedDate = formatDateTime(item.getDtTxt(), holder.itemView.getContext());
+        holder.dateTextView.setText(formattedDate);
         holder.tempTextView.setText(String.format("%.1f°C", item.getMain().getTemp()));
         holder.descTextView.setText(item.getWeather().get(0).getDescription());
         String iconCode = item.getWeather().get(0).getIcon();
@@ -76,6 +81,20 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
                     }
                 }
             });
+        }
+    }
+
+    private String formatDateTime(String dtTxt, Context context) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        SimpleDateFormat outputFormat = new SimpleDateFormat("EEEE HH:mm (dd.MM.yyyy)", Locale.getDefault());
+
+        try{
+            Date date = inputFormat.parse(dtTxt);
+            return outputFormat.format(date);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            return dtTxt;
         }
     }
 }
