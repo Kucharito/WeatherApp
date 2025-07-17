@@ -2,6 +2,7 @@ package com.example.weatherapp;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,6 +93,7 @@ public class WeatherFragment extends Fragment {
 
 
     private void parseCurrentWeatherData(String jsonData) {
+        Log.d("WeatherFragment", "JSON Data: " + jsonData);
         Gson gson = new Gson();
         WeatherResponse weatherResponse = gson.fromJson(jsonData, WeatherResponse.class);
 

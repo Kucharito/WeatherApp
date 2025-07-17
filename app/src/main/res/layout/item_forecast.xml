@@ -27,9 +27,23 @@
         android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/feelsLikeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feels Like"
+        android:textSize="14sp" />
+
+    <TextView
         android:id="@+id/descTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description"
         android:textSize="14sp" />
+    <TextView
+        android:id="@+id/humidityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Humidity"
+        android:textSize="14sp" />
+
 </LinearLayout>

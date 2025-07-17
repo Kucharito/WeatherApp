@@ -16,8 +16,16 @@ public class WeatherResponse {
 
     public class Main{
         private double temp;
+        private double feels_like;
+        private double humidity;
         public double getTemp(){
             return temp;
+        }
+        public double getTempFeelsLike(){
+            return feels_like;
+        }
+        public double getHumidity(){
+            return humidity;
         }
     }
     public class Weather{

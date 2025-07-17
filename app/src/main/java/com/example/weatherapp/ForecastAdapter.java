@@ -1,5 +1,6 @@
 package com.example.weatherapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,13 +34,17 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         return new ForecastViewHolder(view);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull ForecastViewHolder holder, int position) {
         ForecastResponse.ListItem item = forecastList.get(position);
         String formattedDate = formatDateTime(item.getDtTxt(), holder.itemView.getContext());
+        Context context= holder.itemView.getContext();
         holder.dateTextView.setText(formattedDate);
         holder.tempTextView.setText(String.format("%.1f°C", item.getMain().getTemp()));
         holder.descTextView.setText(item.getWeather().get(0).getDescription());
+        holder.feelsLikeTextView.setText(context.getString(R.string.feels_like_label,item.getMain().getTempFeelsLike()));
+        holder.humidityTextView.setText(context.getString(R.string.humidity_label, item.getMain().getHumidity()));
         String iconCode = item.getWeather().get(0).getIcon();
         int iconResId = holder.itemView.getContext().getResources().getIdentifier("ic_" + iconCode, "drawable", holder.itemView.getContext().getPackageName());
         if(iconResId != 0) {
@@ -63,7 +68,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
 
     class ForecastViewHolder extends RecyclerView.ViewHolder {
-        TextView dateTextView, tempTextView, descTextView;
+        TextView dateTextView, tempTextView, descTextView, feelsLikeTextView, humidityTextView;
         ImageView iconImageView;
 
         public ForecastViewHolder(@NonNull View itemView) {
@@ -71,6 +76,8 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
             dateTextView = itemView.findViewById(R.id.dateTextView);
             tempTextView = itemView.findViewById(R.id.tempTextView);
             descTextView = itemView.findViewById(R.id.descTextView);
+            feelsLikeTextView = itemView.findViewById(R.id.feelsLikeTextView);
+            humidityTextView = itemView.findViewById(R.id.humidityTextView);
             iconImageView = itemView.findViewById(R.id.iconImageView);
 
             itemView.setOnClickListener(v -> {
