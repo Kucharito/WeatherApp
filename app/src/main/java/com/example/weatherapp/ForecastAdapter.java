@@ -45,6 +45,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         holder.descTextView.setText(item.getWeather().get(0).getDescription());
         holder.feelsLikeTextView.setText(context.getString(R.string.feels_like_label,item.getMain().getTempFeelsLike()));
         holder.humidityTextView.setText(context.getString(R.string.humidity_label, item.getMain().getHumidity()));
+        holder.windTextView.setText(context.getString(R.string.wind_speed_label, (item.getWind().getSpeed())*3.6));
         String iconCode = item.getWeather().get(0).getIcon();
         int iconResId = holder.itemView.getContext().getResources().getIdentifier("ic_" + iconCode, "drawable", holder.itemView.getContext().getPackageName());
         if(iconResId != 0) {
@@ -68,7 +69,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
 
     class ForecastViewHolder extends RecyclerView.ViewHolder {
-        TextView dateTextView, tempTextView, descTextView, feelsLikeTextView, humidityTextView;
+        TextView dateTextView, tempTextView, descTextView, feelsLikeTextView, humidityTextView, windTextView;
         ImageView iconImageView;
 
         public ForecastViewHolder(@NonNull View itemView) {
@@ -78,6 +79,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
             descTextView = itemView.findViewById(R.id.descTextView);
             feelsLikeTextView = itemView.findViewById(R.id.feelsLikeTextView);
             humidityTextView = itemView.findViewById(R.id.humidityTextView);
+            windTextView = itemView.findViewById(R.id.windTextView);
             iconImageView = itemView.findViewById(R.id.iconImageView);
 
             itemView.setOnClickListener(v -> {

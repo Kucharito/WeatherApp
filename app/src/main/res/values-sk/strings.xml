@@ -14,4 +14,5 @@
     <string name="iconLabel">Ikona</string>
     <string name="feels_like_label">Pocitová teplota %1$.1f°C</string>
     <string name="humidity_label">Vlhkosť %1$.1f%%</string>
+    <string name="wind_speed_label">Rýchlosť vetra %1$.1f km/h</string>
 </resources>

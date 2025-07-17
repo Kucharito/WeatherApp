@@ -18,6 +18,7 @@ public class WeatherResponse {
         private double temp;
         private double feels_like;
         private double humidity;
+        private Wind wind;
         public double getTemp(){
             return temp;
         }
@@ -27,6 +28,7 @@ public class WeatherResponse {
         public double getHumidity(){
             return humidity;
         }
+
     }
     public class Weather{
         private String description;
@@ -38,6 +40,19 @@ public class WeatherResponse {
 
         public String getIcon(){
             return icon;
+        }
+    }
+
+
+    public class Wind{
+        private double speed;
+        private int deg;
+
+        public int getDeg() {
+            return deg;
+        }
+        public double getSpeed() {
+            return speed;
         }
     }
 

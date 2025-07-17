@@ -13,6 +13,7 @@ public class ForecastResponse {
         private WeatherResponse.Main main;
         private List<Weather>weather;
         private String dt_txt;
+        private WeatherResponse.Wind wind;
 
         public WeatherResponse.Main getMain(){
             return main;
@@ -22,6 +23,10 @@ public class ForecastResponse {
         }
         public String getDtTxt(){
             return dt_txt;
+        }
+
+        public WeatherResponse.Wind getWind() {
+            return wind;
         }
     }
     public static class Weather{
@@ -35,6 +40,13 @@ public class ForecastResponse {
             return icon;
         }
 
+    }
+    public static class Wind {
+        private double speed;
+
+        public double getSpeed() {
+            return speed;
+        }
     }
 
 
