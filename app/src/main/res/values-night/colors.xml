@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#BB86FC</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#03DAC5</color>
+
+    <!-- Tmavý režim -->
+    <color name="black">#FFFFFF</color> <!-- Svetlý text -->
+    <color name="white">#121212</color> <!-- Tmavé pozadie -->
+</resources>

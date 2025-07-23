@@ -34,7 +34,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         return new ForecastViewHolder(view);
     }
 
-    @SuppressLint("DefaultLocale")
+    @SuppressLint({"DefaultLocale", "SetTextI18n"})
     @Override
     public void onBindViewHolder(@NonNull ForecastViewHolder holder, int position) {
         ForecastResponse.ListItem item = forecastList.get(position);
@@ -42,7 +42,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         Context context= holder.itemView.getContext();
         holder.dateTextView.setText(formattedDate);
         holder.tempTextView.setText(String.format("%.1f°C", item.getMain().getTemp()));
-        holder.descTextView.setText(item.getWeather().get(0).getDescription());
+        holder.descTextView.setText((item.getWeather().get(0).getDescription()).substring(0, 1).toUpperCase() + (item.getWeather().get(0).getDescription()).substring(1));
         holder.feelsLikeTextView.setText(context.getString(R.string.feels_like_label,item.getMain().getTempFeelsLike()));
         holder.humidityTextView.setText(context.getString(R.string.humidity_label, item.getMain().getHumidity()));
         holder.windTextView.setText(context.getString(R.string.wind_speed_label, (item.getWind().getSpeed())*3.6));

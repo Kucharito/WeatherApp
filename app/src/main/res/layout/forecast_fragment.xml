@@ -2,7 +2,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="88dp">
+    android:paddingTop="100dp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewForecast"
