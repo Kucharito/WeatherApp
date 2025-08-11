@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements OnForecastItemClickListener {
@@ -34,6 +36,13 @@ public class MainActivity extends AppCompatActivity implements OnForecastItemCli
                     getSupportFragmentManager().findFragmentById(R.id.right_fragment_container) == null) {
 
                 getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(
+                                R.anim.slide_in_right,
+                                R.anim.slide_out_left,
+                                R.anim.slide_in_left,
+                                R.anim.slide_out_right
+                        )
+
                         .replace(R.id.left_fragment_container, new WeatherFragment())
                         .replace(R.id.right_fragment_container, new ForecastFragment())
                         .commit();
@@ -52,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements OnForecastItemCli
 
                 if (selectedFragment != null) {
                     getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(
+                                    R.anim.slide_in_right,
+                                    R.anim.slide_out_left,
+                                    R.anim.slide_in_left,
+                                    R.anim.slide_out_right
+                            )
                             .replace(R.id.fragment_container, selectedFragment)
                             .commit();
                 }

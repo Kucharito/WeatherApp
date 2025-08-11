@@ -15,4 +15,5 @@
     <string name="feels_like_label">Feels Like %1$.1f°C</string>
     <string name="humidity_label">Humidity %1$.1f%%</string>
     <string name="wind_speed_label">Wind Speed %1$.1f km/h</string>
+<string name="weather">Weather</string>
 </resources>
