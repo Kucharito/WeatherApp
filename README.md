@@ -31,9 +31,16 @@ The app demonstrates the use of **API integration, Fragments, RecyclerView, and 
 - 📊 Data persistence with SharedPreferences  
 - 🖼️ Clean UI with Fragments and Material Design  
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="screenshots/Screenshot1.png" alt="Home Screen" width="250"/>
+  <img src="screenshots/Screenshot2.png" alt="Forecast Screen" width="250"/>
+  <img src="screenshots/Screenshot3.png" alt="Oprav to" width="500"/>
+</p>
+
 
 ## 🧑‍💻 Author
 
-Created by **Adam Kuchar**  
+Created by **Adam Kuchár**  
 Developed as part of coursework – Android application project.  
-thor
